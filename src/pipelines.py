@@ -32,8 +32,13 @@ class DatabasePipeline:
             website TEXT,
             error TEXT
           );
-          
-          CREATE TABLE IF NOT EXISTS schools (
+          """
+        )
+        self.connection.commit()
+
+        self.cursor.execute(
+            """
+        CREATE TABLE IF NOT EXISTS schools(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT
             airport TEXT
@@ -41,10 +46,9 @@ class DatabasePipeline:
             aopa_source_url TEXT UNIQUE
             time_to_scrape INTEGER
             page_num INTEGER
-          )
+        );
           """
         )
-
         self.connection.commit()
 
     def process_item(self, item: dict[str, str], spider: scrapy.Spider):
