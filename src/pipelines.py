@@ -42,11 +42,11 @@ class DatabasePipeline:
             """
         CREATE TABLE IF NOT EXISTS schools(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT
-            airport TEXT
-            website TEXT
-            aopa_source_url TEXT UNIQUE
-            time_to_scrape INTEGER
+            name TEXT,
+            airport TEXT,
+            website TEXT,
+            aopa_source_url TEXT UNIQUE,
+            time_to_scrape INTEGER,
             page_num INTEGER
         );
           """
