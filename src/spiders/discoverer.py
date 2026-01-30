@@ -8,6 +8,7 @@ class DiscovererScrapy(scrapy.Spider):
     name = "discoverer"
 
     def start_requests(self):
+        self.page_num = 0
         yield scrapy.Request(
             url="https://www.aopa.org/training-and-safety/learn-to-fly/flight-schools#t=tagFlightSchools&sort=%40aopaufbusinessname%20ascending&numberOfResults=100",
             meta={"playwright": True},
