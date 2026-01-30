@@ -48,7 +48,7 @@ class DiscovererScrapy(scrapy.Spider):
                         PageMethod("wait_for_selector", "a.CoveoResultLink"),
                     ],
                 },
-                callback=self.parse_aopa_flight_schools,
+                callback=self.parse,
                 dont_filter=True
             )
 
