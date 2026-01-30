@@ -20,6 +20,8 @@ class DatabasePipeline:
         self.connection = sqlite3.connect("flight-schools.db")
         self.cursor = self.connection.cursor()
 
+        self.start_time = datetime.now()
+
         self.cursor.execute(
             """
           CREATE TABLE IF NOT EXISTS queue (
