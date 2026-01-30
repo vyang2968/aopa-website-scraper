@@ -20,19 +20,27 @@ class DatabasePipeline:
         self.connection = sqlite3.connect("flight-schools.db")
         self.cursor = self.connection.cursor()
 
-        self.start_time = datetime.now()
-
         self.cursor.execute(
             """
+          CREATE TABLE IF NOT EXISTS queue (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            source_url TEXT UNIQUE,
+            airport TEXT,
+            page_num INTEGER,
+            queued_at INTEGER,
+            "type" TEXT,
+            website TEXT,
+            error TEXT
+          );
+          
           CREATE TABLE IF NOT EXISTS schools (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT,
-            airport TEXT,
-            website TEXT,
-            aopa_source_url TEXT UNIQUE,
-            time_to_scrape INTEGER,
-            page_num INTEGER,
-            error TEXT
+            name TEXT
+            airport TEXT
+            website TEXT
+            aopa_source_url TEXT UNIQUE
+            time_to_scrape INTEGER
+            page_num INTEGER
           )
           """
         )
